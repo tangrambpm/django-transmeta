@@ -68,11 +68,6 @@ class Command(BaseCommand):
         default_language = options.get('default_language', None)
         self.delete_columns = options.get('delete_columns', None)
 
-        # set manual transaction management
-        transaction.commit_unless_managed()
-        transaction.enter_transaction_management()
-        transaction.managed(True)
-
         self.cursor = connection.cursor()
         self.introspection = connection.introspection
 
@@ -98,10 +93,9 @@ class Command(BaseCommand):
                             execute_sql = ask_for_confirmation(sql_sentences, model_full_name, assume_yes)
                             if execute_sql:
                                 print ('Executing SQL...')
-                                for sentence in sql_sentences:
-                                    self.cursor.execute(sentence)
-                                    # commit
-                                    transaction.commit()
+                                with transaction.commit_on_success():
+                                    for sentence in sql_sentences:
+                                        self.cursor.execute(sentence)
                                 print ('Done')
                             else:
                                 print ('SQL not executed')
@@ -112,9 +106,6 @@ class Command(BaseCommand):
             for model, fields in self.ignored_fields.items():
                 print ("  %s: %s" % (model, ', '.join(fields)))
             print ("Use -D to delete")
-        if transaction.is_dirty():
-            transaction.commit()
-        transaction.leave_transaction_management()
 
         if not found_db_change_fields:
             print ('\nNo new translatable fields detected')
