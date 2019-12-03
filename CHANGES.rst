@@ -1,3 +1,10 @@
+0.8.0 (2016-02-03)
+-------------------
+
+- Created Neue-Transmeta
+- Fixed admin label's translations in python3
+- Django 1.9 compatible
+
 0.7.3 (2013-09-02)
 -------------------
 
@@ -42,7 +49,7 @@
 0.6.7 (2012-03-20)
 ------------------
 
-- Change the representation (verbose_name) of the transmeta labels 
+- Change the representation (verbose_name) of the transmeta labels
 
 
 0.6.6 (2012-02-06)
@@ -88,4 +95,3 @@
 ------------------
 
 - Make compatible with Django 1.2 and 1.3 when using ugettext_lazy in models verbose_name, fixing a hidden bug also for Django 1.1
-

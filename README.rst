@@ -1,11 +1,11 @@
 Introduction
 ============
 
-.. image:: https://badge.fury.io/py/django-transmeta.png
-    :target: https://badge.fury.io/py/django-transmeta
+.. image:: https://badge.fury.io/py/django-neue-transmeta.png
+    :target: https://badge.fury.io/py/django-neue-transmeta
 
-.. image:: https://pypip.in/d/django-transmeta/badge.png
-    :target: https://pypi.python.org/pypi/django-transmeta
+
+Neue-Transmeta is a fork of Transmeta which is django 1.9 compatible, although they cannot co-exist
 
 Transmeta is an application for translatable content in Django's models. Each
 language is stored and managed automatically in a different column at database
@@ -14,7 +14,7 @@ level.
 Features
 ========
 
-* Automatic schema creation with translatable fields. 
+* Automatic schema creation with translatable fields.
 * Translatable fields integrated into Django's admin interface.
 * Command to synchronize database schema to add new translatable fields and new languages.
 
@@ -191,7 +191,7 @@ All that's left now is calling the ``sync_transmeta_db`` command to update the D
 
 What the hell this command does?
 
-``sync_transmeta_db`` command not only creates new database columns for new translatable field... it copy data from old ``price`` field into one of languages, and that is why command ask you for destination language field for actual data. It's very important that the LANGUAGE_CODE and LANGUAGES (or TRANSMETA_DEFAULT_LANGUAGE, TRANSMETA_LANGUAGES) settings have good values.  
+``sync_transmeta_db`` command not only creates new database columns for new translatable field... it copy data from old ``price`` field into one of languages, and that is why command ask you for destination language field for actual data. It's very important that the LANGUAGE_CODE and LANGUAGES (or TRANSMETA_DEFAULT_LANGUAGE, TRANSMETA_LANGUAGES) settings have good values.
 
 This command also you can execute, when you want add a language to the site, or you want to change the default language in ``transmeta``. For this last case, you can define a variable in the settings file::
 
