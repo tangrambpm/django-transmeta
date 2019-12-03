@@ -1,3 +1,8 @@
+0.8.1 (2019-04-05)
+-------------------
+
+- Django 1.Created Neue-TransmetCreated Neue-Transmetaa8 compatible
+
 0.8.0 (2016-02-03)
 -------------------
 
