@@ -4,8 +4,8 @@ Introduction
 .. image:: https://badge.fury.io/py/django-transmeta.png
     :target: https://badge.fury.io/py/django-transmeta
 
-.. image:: https://pypip.in/d/django-transmeta/badge.png
-    :target: https://pypi.python.org/pypi/django-transmeta
+
+Neue-Transmeta is a fork of Transmeta which is django 1.9 compatible, although they cannot co-exist
 
 Transmeta is an application for to make Django model fields translatable.
 Each language is stored and managed automatically in a different database column.
@@ -204,8 +204,8 @@ You only have to run the ``sync_transmeta_db`` command to update the database sc
 So what does this command do?
 
 The ``sync_transmeta_db`` command not only creates new database columns for new translatable fields,
-it also copies data from the old ``price`` field into the new default tranlated field (here ``prices_es``).
-It's very important that the LANGUAGE_CODE and LANGUAGES (or TRANSMETA_DEFAULT_LANGUAGE, TRANSMETA_LANGUAGES) settings have the correct values.
+it also copies data from the old ``price`` field into the new default translated field (here ``prices_es``).
+It's very important that the LANGUAGE_CODE and LANGUAGES (or TRANSMETA_DEFAULT_LANGUAGE, TRANSMETA_LANGUAGES) settings have correct values.
 
 This command is also needed if you want to add a new language to the site or the default language is changed.
 For the latter case, you can define a variable in the settings file::

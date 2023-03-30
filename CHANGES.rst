@@ -3,6 +3,16 @@
 
 - Fix bug in sync_transmeta_db command if translated columns of unconfigured languages exist already.
 
+nueue-0.8.1 (2019-04-05)
+-------------------
+
+- Django 1.Created Neue-TransmetCreated Neue-Transmetaa8 compatible
+
+nueue-0.8.0 (2016-02-03)
+-------------------
+
+- Created Neue-Transmeta
+
 0.7.3 (2013-09-02)
 -------------------
 
@@ -93,4 +103,3 @@
 ------------------
 
 - Make compatible with Django 1.2 and 1.3 when using ugettext_lazy in models verbose_name, fixing a hidden bug also for Django 1.1
-

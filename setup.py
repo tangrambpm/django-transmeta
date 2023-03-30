@@ -1,4 +1,4 @@
-# Copyright (c) 2010 by Yaco Sistemas <pmartin@yaco.es>
+# Copyright (c) 2016 by Mohi Beyki <mohibeyki@gmail.com>
 #
 # This software is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -38,9 +38,10 @@ long_description = (
 
 setup(
     name="django-transmeta",
-    version="0.7.4",
+    author="erny",
+    version="0.8.2",
     author="Yaco Sistemas S.L.",
-    author_email="garcia.marc@gmail.com",
+    author_email="ernesto.revilla@gmail.com",
     description="Transmeta is an application for translatable content in Django's models.",
     long_description=long_description,
     classifiers=[
@@ -52,7 +53,7 @@ setup(
     ],
     license="LGPL 3",
     keywords="django,translation,internationalization,i18n,transmeta,models,translation models",
-    url='https://github.com/Yaco-Sistemas/django-transmeta',
+    url='https://github.com/mohibeyki/NeueTransmeta',
     packages=find_packages('.'),
     package_dir={'': '.'},
     zip_safe=False,
