@@ -1,14 +1,12 @@
-from __future__ import unicode_literals
 import copy
 
 from collections import OrderedDict
 from django.db import models
 from django.db.models.fields import NOT_PROVIDED
 from django.conf import settings
-from django.utils.encoding import python_2_unicode_compatible
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.translation import get_language as django_get_language
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 LANGUAGE_CODE = 0
@@ -86,7 +84,7 @@ def default_value(field):
     '''
 
     def default_value_func(self):
-        attname = lambda x: get_real_fieldname(field, x)
+        attname = lambda x: get_real_fieldname(field, x)  # noqa
 
         if getattr(self, attname(get_language()), None):
             result = getattr(self, attname(get_language()))
@@ -131,8 +129,8 @@ class TransMeta(models.base.ModelBase):
         else:
             new_class = super(TransMeta, cls).__new__(cls, name, bases, attrs)
             # we inherits possible translatable_fields from superclasses
-            abstract_model_bases = [base for base in bases if hasattr(base, '_meta') \
-                                    and base._meta.abstract]
+            abstract_model_bases = [
+                base for base in bases if hasattr(base, '_meta') and base._meta.abstract]
             translatable_fields = []
             for base in abstract_model_bases:
                 if hasattr(base._meta, 'translatable_fields'):
@@ -144,12 +142,11 @@ class TransMeta(models.base.ModelBase):
             raise ImproperlyConfigured("Meta's translate attribute must be a tuple")
 
         for field in fields:
-            if not field in attrs or \
-               not isinstance(attrs[field], models.fields.Field):
-                    raise ImproperlyConfigured(
-                        "There is no field %(field)s in model %(name)s, "\
-                        "as specified in Meta's translate attribute" % \
-                        dict(field=field, name=name))
+            if field not in attrs or not isinstance(attrs[field], models.fields.Field):
+                raise ImproperlyConfigured(
+                    "There is no field %(field)s in model %(name)s, "
+                    "as specified in Meta's translate attribute" %
+                    dict(field=field, name=name))
             original_attr = attrs[field]
             for lang in get_languages():
                 lang_code = lang[LANGUAGE_CODE]
@@ -175,7 +172,6 @@ class TransMeta(models.base.ModelBase):
         return new_class
 
 
-@python_2_unicode_compatible
 class LazyString(object):
 
     def __init__(self, proxy, lang):
