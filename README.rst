@@ -1,11 +1,8 @@
 Introduction
 ============
 
-.. image:: https://badge.fury.io/py/django-transmeta.png
-    :target: https://badge.fury.io/py/django-transmeta
-
-
-Neue-Transmeta is a fork of Transmeta which is django 1.9 compatible, although they cannot co-exist
+.. image:: https://badge.fury.io/py/django-neue-transmeta.png
+    :target: https://badge.fury.io/py/django-neue-transmeta
 
 Transmeta is an application for to make Django model fields translatable.
 Each language is stored and managed automatically in a different database column.
@@ -126,15 +123,15 @@ e.g.: ``description_es``, ``description_en``, and so on. In addition it creates 
 Let's play a bit in the python shell to understand how this works::
 
     >>> from fooapp.models import Book
-    >>> b = Book.objects.create(description_es=u'mi descripcion', description_en=u'my description')
+    >>> b = Book.objects.create(description_es='mi descripcion', description_en='my description')
     >>> b.description
-    u'my description'
+    'my description'
     >>> from django.utils.translation import activate
     >>> activate('es')
     >>> b.description
-    u'mi descripcion'
+    'mi descripcion'
     >>> b.description_en
-    u'my description'
+    'my description'
 
 Adding new languages
 --------------------
@@ -143,9 +140,9 @@ If you need to add new languages to the existing ones you only need to change yo
 For example, to add French to our project, you need to add it to LANGUAGES in ``settings.py``::
 
     LANGUAGES = (
-        ('es', ugettext('Spanish')),
-        ('en', ugettext('English')),
-        ('fr', ugettext('French')),
+        ('es', gettext('Spanish')),
+        ('en', gettext('English')),
+        ('fr', gettext('French')),
     )
 
 and execute the ``sync_transmeta_db`` command::
