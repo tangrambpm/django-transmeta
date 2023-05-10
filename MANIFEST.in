@@ -4,3 +4,4 @@ include CHANGES.rst
 include LICENSE
 exclude *~
 exclude *.pyc
+exclude .flake8
