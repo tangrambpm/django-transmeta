@@ -15,6 +15,11 @@ Features
 * Translatable fields integrated into Django's admin interface.
 * Command to synchronize database schema for new or removed translatable fields and languages.
 
+.. warning::
+    Currently, the changes are also detected with ``makemigrations`` which will
+    create a migration which has to be "faked"
+
+
 Using transmeta
 ===============
 
@@ -71,21 +76,21 @@ Make sure you have set both, the default language and other available languages 
         ('en', ugettext('English')),
     )
 
-Notes:
+..note::
 
-* It's possible to set another language as default for the content::
+    * It's possible to set another language as default for the content::
 
-    TRANSMETA_DEFAULT_LANGUAGE = 'it'
+        TRANSMETA_DEFAULT_LANGUAGE = 'it'
 
-  This would show the interface in one language and the content in another one.
+      This would show the interface in one language and the content in another one.
 
-* You can do the same with available content languages::
+    * You can do the same with available content languages::
 
-    TRANSMETA_LANGUAGES = (
-        ('es', ugettext('Spanish')),
-        ('en', ugettext('English')),
-        ('it', ugettext('Italian')),
-    )
+        TRANSMETA_LANGUAGES = (
+            ('es', ugettext('Spanish')),
+            ('en', ugettext('English')),
+            ('it', ugettext('Italian')),
+        )
 
 SQL generated using ``./manage.py sqlall``::
 
@@ -104,15 +109,14 @@ SQL generated using ``./manage.py sqlall``::
     ;
     COMMIT;
 
-Notes:
+.. note::
 
-* ``transmeta`` creates one column for each language. Don't worry if you need new languages in the future, ``transmeta`` solves this problem for you.
-* If one field has ``null=False`` and doesn't have a default value, ``transmeta`` will create only one ``NOT NULL`` field, for the default language.
-  Fields for other secondary languages will be nullable. The primary language will be required in the admin app,
-  while the other fields will be optional (with ``blank=True``).
-  This was done because the normal approach for content translation is to add first the content fo the main language and
-  complete other translations afterwards.
-* You can use ``./manage.py syncdb`` to create database schema.
+    * ``transmeta`` creates one column for each language. Don't worry if you need new languages in the future, ``transmeta`` solves this problem for you.
+    * If one field has ``null=False`` and doesn't have a default value, ``transmeta`` will create only one ``NOT NULL`` field, for the default language.
+      Fields for other secondary languages will be nullable. The primary language will be required in the admin app,
+      while the other fields will be optional (with ``blank=True``).
+      This was done because the normal approach for content translation is to add first the content fo the main language and
+      complete other translations afterwards.
 
 Playing with the Python shell
 -----------------------------

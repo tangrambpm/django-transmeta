@@ -1,4 +1,6 @@
+# Copyright (c) 2023 Ernesto Revilla <ernesto.revilla@gmail.com>
 # Copyright (c) 2016 by Mohi Beyki <mohibeyki@gmail.com>
+# Copyright (c) 2010 by Yaco Sistemas SL
 #
 # This software is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
